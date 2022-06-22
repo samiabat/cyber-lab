@@ -6,19 +6,28 @@ import { AppComponent } from './app.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { LoginComponent } from './login/login.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedService } from './shared.service';
+import { TokenInterceptorService } from './token-interceptor.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterUserComponent,
     LoginComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule, 
+    FormsModule, 
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    SharedService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

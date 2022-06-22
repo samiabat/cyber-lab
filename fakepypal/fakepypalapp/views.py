@@ -12,6 +12,7 @@ from rest_framework.parsers import JSONParser
 
 from .serializers import *
 
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def profileApi(request, format=None):
@@ -34,9 +35,10 @@ def profileApi(request, format=None):
             return Response(content)
 
 
-@csrf_exempt
+#@csrf_exempt
 @api_view (['GET', 'POST', 'DELETE', 'PUT'])
 def userApi(request, pk=-1):
+    
     if request.method == "GET":
         if pk==-1:
             users = User.objects.all()
@@ -53,6 +55,7 @@ def userApi(request, pk=-1):
                 return JsonResponse(message, status = 404, safe=False) 
         
     elif request.method == "POST":
+        
         customer_data = JSONParser().parse(request)
         try :
             other_customer = User.objects.get(username = customer_data["username"])

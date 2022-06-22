@@ -1,1 +1,46 @@
-<p>login works!</p>
+
+<div class="container">
+    <div class="card mx-auto border-0" style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;margin:50px;">
+      <div class="card-header border-bottom-0 bg-transparent">
+        <h2 class="text-center">Login</h2>
+      </div>
+  
+      <div *ngIf="error()" class="text-center">
+        <div style="width: 90%;margin: auto;height: 30px;padding: 0;" class="alert alert-danger" role="alert">
+          Invalid credientials!
+        </div>
+      </div>
+     
+  
+      <div class="card-body pb-4">
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-login-as-user" role="tabpanel" >
+            <form [formGroup]="userLoginReactiveForm" (ngSubmit)="login(userLoginReactiveForm)">
+              
+              <div class="form-floating mb-3">
+                <input formControlName="username" type="text" [ngClass]="getClass(userLoginReactiveForm, 'username')" id="floatingInput" placeholder="Username">
+                <label for="floatingInput">Username</label>
+                <small *ngIf="userLoginReactiveForm.get('username').invalid && userLoginReactiveForm.get('username').touched" class="text-danger l-1">Username is required and must be atleast 5 characters long</small>
+              </div>
+              
+              <div class="form-floating mb-3">
+                <input
+                  [ngClass]="getClass(userLoginReactiveForm, 'password')"
+                formControlName="password" type="password" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+                <small *ngIf="userLoginReactiveForm.get('password').invalid && userLoginReactiveForm.get('password').touched" class="text-danger">Password is required and must be atleast 4 characters long</small>
+              </div>
+  
+              <div class="text-center pt-4">
+                <button [disabled]="userLoginReactiveForm.invalid" type="submit" class="btn btn-primary">Login</button>
+              </div>
+              <p class ="text-center">Did`t you have account? </p>
+              <div class="text-center" style="margin-top: 20px;">
+                <a routerLink="/register" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Register</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
