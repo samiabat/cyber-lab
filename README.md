@@ -2,7 +2,7 @@
 #### Name 
 <pre>
   My name is Samuel Abatneh from Addis Ababa University software engineering student.
-  caustion these is github is for the educational purpose. 
+  Caustion: these is repo is for only the educational purpose. 
 </pre>
 ### Description
 <pre>
